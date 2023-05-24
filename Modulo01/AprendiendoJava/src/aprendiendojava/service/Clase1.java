@@ -9,8 +9,15 @@ package aprendiendojava.service;
  * @facebook https://www.facebook.com/groups/desarrollasoftware/
  */
 public class Clase1 {
+
+	public Clase1() {
+		System.out.println("Hola desde Clase1.");
+	}
+	
+	
 	
 	public int suma(int n1, int n2){
+		System.out.println("Ejecutando suma de Clase1.");
 		return (n1+n2);
 	}
 	

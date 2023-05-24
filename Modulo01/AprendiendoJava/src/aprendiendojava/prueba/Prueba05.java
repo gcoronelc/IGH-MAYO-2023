@@ -14,8 +14,9 @@ import aprendiendojava.service.Clase2;
 public class Prueba05 {
 	
 	public static void main(String[] args) {
-		Clase1 obj = new Clase2();
+		Clase2 obj = new Clase2();
 		System.out.println("Suma: " + obj.suma(6, 4));
+		//System.out.println("Factorial: " + obj.fact(4));
 	}
 
 }
