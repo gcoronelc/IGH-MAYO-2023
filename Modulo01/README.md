@@ -1,9 +1,15 @@
 # MODULO 1
 
 
-## Video Complementario 
+## Videos Complementarios 
 
 - Programación en capas y el enfoque de servicios
 
-[![Patrones de Diseño](https://raw.githubusercontent.com/gcoronelc/UCV_POO_202301-A2/main/Semana07/img/video2.jpg)](https://youtu.be/Xcq6_bqmRBI)
+[![Programación en capas y el enfoque de servicios](https://raw.githubusercontent.com/gcoronelc/IGH-MAYO-2023/main/Modulo01/img/video1.jpg)](https://youtu.be/Xcq6_bqmRBI)
+
+- Usando objetos DTO
+
+[![Usando objetos DTO](https://raw.githubusercontent.com/gcoronelc/IGH-MAYO-2023/main/Modulo01/img/video2.jpg)](https://youtu.be/sVLtTIc-hqk)
+
+
 
