@@ -25,8 +25,7 @@ public class AccesoDB {
         } catch (ClassNotFoundException e) {
             throw new SQLException("No se encontro el driver de la BD.");
         } catch (Exception e) {
-            throw new SQLException("No se puede establecer "
-                    + "conexión de la BD.");
+            throw new SQLException("No se puede establecer conexión de la BD.");
         }
         return cn;
     }
