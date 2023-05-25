@@ -1,7 +1,9 @@
 package pe.egcc.pagoapp.view;
 
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 import pe.egcc.pagoapp.dto.PagoDto;
+import pe.egcc.pagoapp.excepciones.NumerosPositivos;
 import pe.egcc.pagoapp.service.PagoService;
 
 /**
@@ -95,20 +97,32 @@ public class PagoView extends javax.swing.JFrame {
   }// </editor-fold>//GEN-END:initComponents
 
   private void btnProcesarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcesarActionPerformed
-    // Datos
-    PagoDto pagoDto = new PagoDto();
-    pagoDto.setHorasDia(Integer.parseInt(txtHorasDia.getText()));
-    pagoDto.setDias(Integer.parseInt(txtDias.getText()));
-    pagoDto.setPagoHora(Double.parseDouble(txtPagoHora.getText()));
-    // Proceso
-    PagoService pagoService = new PagoService();
-    pagoService.procesar(pagoDto);
-    // Reporte
-    String repo = "";
-    repo += "Ingresos: " + pagoDto.getIngresos() + "\n";
-    repo += "Renta: " + pagoDto.getRenta() + "\n";
-    repo += "Neto: " + pagoDto.getNeto() + "\n";
-    JOptionPane.showMessageDialog(rootPane, repo);
+    try {
+		  // Datos
+		  PagoDto pagoDto = new PagoDto();
+		  pagoDto.setHorasDia(Integer.parseInt(txtHorasDia.getText()));
+		  pagoDto.setDias(Integer.parseInt(txtDias.getText()));
+		  pagoDto.setPagoHora(Double.parseDouble(txtPagoHora.getText()));
+		  // Validar
+		  validarDato(pagoDto.getHorasDia());
+		  validarDato(pagoDto.getDias());
+		  validarDato(pagoDto.getPagoHora());
+		  // Proceso
+		  PagoService pagoService = new PagoService();
+		  pagoService.procesar(pagoDto);
+		  // Reporte
+		  String repo = "";
+		  repo += "Ingresos: " + pagoDto.getIngresos() + "\n";
+		  repo += "Renta: " + pagoDto.getRenta() + "\n";
+		  repo += "Neto: " + pagoDto.getNeto() + "\n";
+		  JOptionPane.showMessageDialog(rootPane, repo);
+	  } catch (NumberFormatException e1) {
+		  JOptionPane.showMessageDialog(null, "Se debe ingresar numeros enteros.");
+	  } catch (HeadlessException e2) {
+		  JOptionPane.showMessageDialog(null, e2.getMessage());
+	  } catch (NumerosPositivos e3) {
+		  JOptionPane.showMessageDialog(null, e3.getMessage());
+	  }
   }//GEN-LAST:event_btnProcesarActionPerformed
 
     /**
@@ -155,5 +169,17 @@ public class PagoView extends javax.swing.JFrame {
   private javax.swing.JTextField txtHorasDia;
   private javax.swing.JTextField txtPagoHora;
   // End of variables declaration//GEN-END:variables
+
+	private void validarDato(int valor) throws NumerosPositivos {
+		if(valor<=0){
+			throw new NumerosPositivos("El valor ingresado debe ser entero y positivo.");
+		}
+	}
+	
+	private void validarDato(double valor) throws NumerosPositivos {
+		if(valor<=0){
+			throw new NumerosPositivos();
+		}
+	}
 
 }
