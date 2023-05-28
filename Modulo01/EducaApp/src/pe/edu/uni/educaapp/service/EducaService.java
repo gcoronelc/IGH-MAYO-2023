@@ -34,12 +34,14 @@ public class EducaService {
 			validarMatriculaNoExista(idAlumno, idCurso); // Verificar que no exist la matricula
 			// 3.- Verificar Deudas
 
+			
+			
 			// 4.- Verificar si existe el código del curso
 			validarCurso(idCurso);
 			// 5.- Verificar si hay vacantes
 			validarVacantes(idCurso);
 			// 6.- Verificar el precio.
-
+			validarPrecio(idCurso, precio);
 			// 7.- verificar que el nro de cuotas sea valido
 			// 9.- Registrar matrícula
 			pstm = cn.prepareStatement(MATRICULA_INSERT);
@@ -133,6 +135,10 @@ public class EducaService {
 		if (filas > 0) {
 			throw new SQLException("La matricula ya existe.");
 		}
+	}
+
+	private void validarPrecio(int idCurso, double precio) {
+		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
 	}
 
 }

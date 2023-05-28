@@ -21,7 +21,7 @@ public class AccesoDB {
             Class.forName(driver).getDeclaredConstructor().newInstance();
             cn = DriverManager.getConnection(urlDB, user, pass);
         } catch (SQLException e) {
-            throw e;
+            throw e; // Propagar el error
         } catch (ClassNotFoundException e) {
             throw new SQLException("No se encontro el driver de la BD.");
         } catch (Exception e) {
